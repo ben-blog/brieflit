@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brieflit — AI 뉴스로 배우는 업무 영어</title>
+<meta name="description" content="AI 트렌드를 놓치지 않으면서 원어민식 업무 표현까지. 어차피 알아야 할 AI, 어차피 써야 할 영어.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #111111;
+    --yellow: #F5C842;
+    --white: #ffffff;
+    --offwhite: #F7F4EE;
+    --gray: #888888;
+    --light-gray: #E8E5DF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--offwhite);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: var(--offwhite);
+    border-bottom: 1.5px solid var(--black);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--black);
+    text-decoration: none;
+    letter-spacing: -1px;
+  }
+
+  .nav-logo span { color: var(--yellow); }
+
+  .nav-cta {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--yellow);
+    color: var(--black);
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-marquee {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+    white-space: nowrap;
+  }
+
+  .hero-marquee-inner {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+  }
+
+  .hero-marquee-inner span {
+    font-family: 'Playfair Display', serif;
+    font-size: 200px;
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--light-gray);
+    letter-spacing: -4px;
+    padding-right: 80px;
+    line-height: 1;
+  }
+
+  .hero-marquee-inner span em {
+    font-style: normal;
+    color: transparent;
+    -webkit-text-stroke: 1.5px rgba(245, 200, 66, 0.4);
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .hero-content {
+    max-width: 760px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 32px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1.5px;
+    background: var(--yellow);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -3px;
+    color: var(--black);
+    margin-bottom: 32px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--yellow);
+    -webkit-text-stroke: 1px var(--black);
+  }
+
+  .hero-desc {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #444;
+    max-width: 540px;
+    margin-bottom: 48px;
+  }
+
+  .hero-desc strong {
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 18px 40px;
+    text-decoration: none;
+    border: 1.5px solid var(--black);
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--black);
+    color: var(--yellow);
+    transform: translateY(-2px);
+  }
+
+  .hero-note {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  .hero-note strong {
+    color: var(--black);
+    font-weight: 500;
+  }
+
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--black);
+    padding: 24px 48px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 0 48px;
+    border-right: 1px solid #333;
+    flex-shrink: 0;
+  }
+
+  .stat-item:first-child { padding-left: 0; }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--yellow);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 300;
+    color: #999;
+    letter-spacing: 0.5px;
+  }
+
+  /* HOW IT WORKS */
+  .section {
+    padding: 100px 48px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 700;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 64px;
+    max-width: 600px;
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1.5px solid var(--black);
+  }
+
+  .step {
+    padding: 48px 40px;
+    border-right: 1.5px solid var(--black);
+    position: relative;
+    background: var(--white);
+    transition: background 0.2s;
+  }
+
+  .step:last-child { border-right: none; }
+  .step:hover { background: var(--offwhite); }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px;
+    font-weight: 900;
+    color: var(--light-gray);
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  .step-desc {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  /* SAMPLE */
+  .sample-section {
+    background: var(--black);
+    padding: 100px 48px;
+  }
+
+  .sample-section .section-label { color: #666; }
+  .sample-section .section-title { color: var(--white); }
+
+  .sample-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    max-width: 680px;
+  }
+
+  .sample-header {
+    background: var(--black);
+    padding: 20px 28px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sample-tag {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--yellow);
+  }
+
+  .sample-date { font-size: 11px; color: #555; }
+
+  .sample-body { padding: 28px; }
+
+  .expr-card {
+    border: 1px solid #2a2a2a;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .expr-top {
+    background: #222;
+    padding: 16px 20px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+
+  .expr-phrase {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .expr-type {
+    font-size: 11px;
+    color: #555;
+    margin-top: 2px;
+  }
+
+  .expr-meaning {
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 4px;
+  }
+
+  .expr-quote {
+    padding: 12px 20px;
+    background: #1a1a1a;
+    border-bottom: 1px solid #2a2a2a;
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  .expr-example {
+    padding: 12px 20px;
+    background: #1a1a1a;
+    border-top: 2px solid var(--yellow);
+  }
+
+  .expr-example-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 4px;
+  }
+
+  .expr-example-text {
+    font-size: 13px;
+    color: #ccc;
+    line-height: 1.6;
+  }
+
+  .highlight {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 1px 3px;
+    font-weight: 500;
+  }
+
+  /* PRICING */
+  .pricing-section {
+    padding: 100px 48px;
+    background: var(--offwhite);
+  }
+
+  .pricing-card {
+    max-width: 480px;
+    background: var(--white);
+    border: 1.5px solid var(--black);
+    padding: 56px 48px;
+    position: relative;
+  }
+
+  .pricing-badge {
+    position: absolute;
+    top: -14px;
+    left: 40px;
+    background: var(--yellow);
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border: 1.5px solid var(--black);
+  }
+
+  .pricing-price {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .price-original {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--gray);
+    text-decoration: line-through;
+  }
+
+  .price-current {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--black);
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+
+  .price-unit {
+    font-size: 14px;
+    color: var(--gray);
+    font-weight: 300;
+  }
+
+  .pricing-note {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .pricing-features {
+    list-style: none;
+    margin-bottom: 40px;
+  }
+
+  .pricing-features li {
+    font-size: 15px;
+    font-weight: 300;
+    color: #444;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--light-gray);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .pricing-features li::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: var(--yellow);
+    border: 1px solid var(--black);
+    flex-shrink: 0;
+  }
+
+  .btn-subscribe {
+    display: block;
+    width: 100%;
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    border: 1.5px solid var(--black);
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+
+  .btn-subscribe:hover {
+    background: var(--black);
+    color: var(--yellow);
+    transform: translateY(-2px);
+  }
+
+  .refund-note {
+    font-size: 12px;
+    color: var(--gray);
+    text-align: center;
+    margin-top: 16px;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--black);
+    padding: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1.5px solid #222;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -1px;
+  }
+
+  .footer-logo span { color: var(--yellow); }
+
+  .footer-info {
+    font-size: 12px;
+    color: #555;
+    font-weight: 300;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  .footer-info a {
+    color: #555;
+    text-decoration: none;
+  }
+
+  .footer-info a:hover { color: var(--yellow); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
+  .hero-title { animation: fadeUp 0.6s ease 0.1s both; }
+  .hero-desc { animation: fadeUp 0.6s ease 0.2s both; }
+  .hero-actions { animation: fadeUp 0.6s ease 0.3s both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero::before { font-size: 280px; right: -20px; }
+    .stats-bar { padding: 20px 24px; gap: 0; overflow-x: auto; }
+    .stat-item { padding: 0 24px; }
+    .section { padding: 60px 24px; }
+    .steps { grid-template-columns: 1fr; }
+    .step { border-right: none; border-bottom: 1.5px solid var(--black); }
+    .step:last-child { border-bottom: none; }
+    .sample-section { padding: 60px 24px; }
+    .pricing-section { padding: 60px 24px; }
+    .pricing-card { padding: 48px 28px; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 24px; text-align: center; }
+    .footer-info { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Brief<span>lit</span></a>
+  <a href="https://page.stibee.com/subscriptions/486409" class="nav-cta">구독하기</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-marquee">
+    <div class="hero-marquee-inner">
+      <span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">AI News · Business English</div>
+    <h1 class="hero-title">
+      AI 뉴스 읽는<br>
+      3분,<br>
+      업무 영어가<br>
+      <em>됩니다</em>
+    </h1>
+    <p class="hero-desc">
+      AI 트렌드를 놓치지 않으면서 원어민식 표현까지.<br>
+      뉴스 원문에서 직접 뽑은 업무 영어 5개를 매주 2회 드립니다.<br>
+      <strong>어차피 알아야 할 AI, 어차피 써야 할 영어.</strong>
+    </p>
+    <div class="hero-actions">
+      <a href="https://page.stibee.com/subscriptions/486409" class="btn-primary">지금 구독하기 →</a>
+      <span class="hero-note">첫 달 <strong>9,950원</strong> · 이후 월 19,900원</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">5</span>
+    <span class="stat-label">핵심 표현 / 회</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">2회</span>
+    <span class="stat-label">매주 발송</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">3분</span>
+    <span class="stat-label">읽는 시간</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">실제 원문 기반</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <p class="section-label">How it works</p>
+  <h2 class="section-title">어떻게 만들어지나요</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">AI 뉴스 수집</div>
+      <p class="step-desc">TechCrunch, The Verge, MIT Technology Review 등 글로벌 AI 미디어의 최신 기사를 매일 수집합니다.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">표현 선별</div>
+      <p class="step-desc">원문에서 원어민이 실제로 쓰는 세련된 업무 표현 5개를 골라냅니다. 토익에선 나오지 않는 표현들입니다.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">브리핑 발송</div>
+      <p class="step-desc">뉴스 요약 + 핵심 표현 + 업무 예문 + 말하기 연습까지. 3분이면 충분합니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE -->
+<section class="sample-section">
+  <p class="section-label">Sample</p>
+  <h2 class="section-title">이런 표현을 배웁니다</h2>
+  <div class="sample-card">
+    <div class="sample-header">
+      <span class="sample-tag">Key Expressions</span>
+      <span class="sample-date">TechCrunch · 실제 원문</span>
+    </div>
+    <div class="sample-body">
+      <div class="expr-card">
+        <div class="expr-top">
+          <div class="expr-phrase">gain traction</div>
+          <div class="expr-type">동사구</div>
+          <div class="expr-meaning">관심과 인기를 얻다, 탄력을 받다</div>
+        </div>
+        <div class="expr-quote">📰 "When Beek posted on X about the idea in February, it <span class="highlight">got lots of traction</span>."</div>
+        <div class="expr-example">
+          <div class="expr-example-label">Business example</div>
+          <div class="expr-example-text">Our new onboarding process is starting to <span class="highlight">gain traction</span> among regional teams.</div>
+        </div>
+      </div>
+      <div class="expr-card">
+        <div class="expr-top">
+          <div class="expr-phrase">build it out</div>
+          <div class="expr-type">동사구</div>
+          <div class="expr-meaning">(아이디어를) 본격적으로 구체화하다</div>
+        </div>
+        <div class="expr-quote">📰 "Tell the program what you want to make, and it will suggest everything you need to <span class="highlight">build it out</span>."</div>
+        <div class="expr-example">
+          <div class="expr-example-label">Business example</div>
+          <div class="expr-example-text">We've validated the concept — now it's time to <span class="highlight">build it out</span> into a full product.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <p class="section-label">Pricing</p>
+  <h2 class="section-title">심플하게, 하나의 플랜</h2>
+  <div class="pricing-card">
+    <div class="pricing-badge">얼리버드 50% 할인</div>
+    <div class="pricing-price">
+      <span class="price-original">19,900원</span>
+      <span class="price-current">9,950</span>
+      <span class="price-unit">원 / 첫 달</span>
+    </div>
+    <p class="pricing-note">이후 월 19,900원 · 언제든 해지 가능</p>
+    <ul class="pricing-features">
+      <li>매주 2회 AI 뉴스 브리핑</li>
+      <li>회당 원어민 업무 표현 5개</li>
+      <li>실제 원문 + 업무 예문 + 말하기 연습</li>
+      <li>TechCrunch, The Verge 등 글로벌 소스</li>
+      <li>첫 브리핑 후 100% 환불 보장</li>
+    </ul>
+    <a href="https://page.stibee.com/subscriptions/486409" class="btn-subscribe">지금 구독하기 →</a>
+    <p class="refund-note">카드 · 카카오페이 결제 · 마음에 안 들면 전액 환불</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Brief<span>lit</span></div>
+  <div class="footer-info">
+    AI 뉴스로 배우는 업무 영어<br>
+    Super Alloy, Inc. · <a href="mailto:team@brieflit.news">team@brieflit.news</a>
+  </div>
+</footer>
+
+</body>
+</html>
