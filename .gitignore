@@ -5,3 +5,5 @@ __pycache__/
 data/
 content/
 *.py
+assets/
+brieflit_spec_v1.md
