@@ -262,14 +262,7 @@
     }
 
     /* ─── CARD SHOWCASE ──────────────────────────────────── */
-    /*
-     * 카드 이미지 사용법:
-     * 1. 카드 이미지를 GitHub 레포 /images/ 폴더에 업로드
-     * 2. 아래 .showcase-card 의 background-image URL을 실제 경로로 교체
-     * 예: background-image: url('images/card_throw_shade.png');
-     *
-     * 현재는 placeholder 상태 (이미지 없이 스타일만 표시)
-     */
+
     .showcase-scroll {
       display: flex;
       gap: 16px;
@@ -301,29 +294,7 @@
       box-shadow: 0 16px 40px rgba(0,0,0,0.5);
     }
 
-    /* 실제 이미지 없을 때 보이는 placeholder */
-    .showcase-card.placeholder::after {
-      content: attr(data-label);
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.25);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      text-align: center;
-      padding: 16px;
-      /* 이미지 추가 후 이 ::after 스타일 전체 삭제 가능 */
-    }
-    /* ─── 이미지 있는 카드: class="showcase-card" (placeholder 없이) ─── */
-    /* 예시:
-    .card-throw-shade  { background-image: url('images/card_throw_shade.png'); }
-    .card-tip-1        { background-image: url('images/brieflit_tip_card3.png'); }
-    .card-avatar       { background-image: url('images/card_ai_avatar.png'); }
-    */
+
 
     .showcase-hint {
       margin-top: 16px;
@@ -679,22 +650,13 @@
       <p class="section-sub">X와 인스타그램에 매일 올라오는 표현 카드 일부예요.<br>뉴스레터에서는 원문·예문·연습까지 훨씬 깊게 다룹니다.</p>
     </div>
 
-    <!--
-    ============================================================
-    카드 이미지 추가 방법:
-    1. 카드 이미지를 GitHub 레포 /images/ 폴더에 업로드
-    2. 각 .showcase-card 에서 class="showcase-card placeholder" 를
-       class="showcase-card" 로 바꾸고
-       style="background-image:url('images/파일명.png')" 추가
-    3. data-label 속성은 삭제해도 됨 (placeholder 텍스트용)
-    ============================================================
-    -->
+
     <div class="container">
       <div class="showcase-scroll">
-        <div class="showcase-card placeholder" data-label="카드 이미지\n추가 예정"></div>
-        <div class="showcase-card placeholder" data-label="카드 이미지\n추가 예정"></div>
-        <div class="showcase-card placeholder" data-label="카드 이미지\n추가 예정"></div>
-        <div class="showcase-card placeholder" data-label="카드 이미지\n추가 예정"></div>
+        <div class="showcase-card" style="background-image:url('images/card_gain_traction.png')"></div>
+        <div class="showcase-card" style="background-image:url('images/card_throw_shade.png')"></div>
+        <div class="showcase-card" style="background-image:url('images/card_tip.png')"></div>
+        <div class="showcase-card" style="background-image:url('images/card_ai_avatar.png')"></div>
       </div>
       <p class="showcase-hint">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
