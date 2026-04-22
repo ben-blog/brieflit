@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Brieflit — AI 뉴스로 배우는 업무 영어</title>
   <meta name="description" content="AI 트렌드를 읽으면서 원어민 업무 표현까지. 매주 2회, 3분이면 됩니다." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23111111'/><rect x='0' y='0' width='32' height='4' rx='2' fill='%23F5C842'/><text x='16' y='23' font-family='Georgia,serif' font-size='18' font-weight='900' font-style='italic' fill='%23F7F4EE' text-anchor='middle'>B</text></svg>" />
 
   <!-- Google Fonts: Playfair Display + DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,7 +26,7 @@
       --font-body:    'DM Sans', Trebuchet MS, sans-serif;
 
       --max-w: 720px;
-      --section-gap: 100px;
+      --section-gap: 64px;
     }
 
     /* ─── RESET ──────────────────────────────────────────── */
@@ -112,7 +113,7 @@
 
     /* ─── HERO ───────────────────────────────────────────── */
     .hero {
-      padding: 80px 0 72px;
+      padding: 56px 0 48px;
       border-bottom: 1px solid var(--border);
     }
     .hero-eyebrow {
@@ -177,7 +178,7 @@
 
     /* ─── STATS ──────────────────────────────────────────── */
     .stats {
-      padding: 52px 0;
+      padding: 36px 0;
       border-bottom: 1px solid var(--border);
     }
     .stats-grid {
@@ -229,7 +230,7 @@
       color: rgba(247,244,238,0.6);
       max-width: 480px;
       line-height: 1.75;
-      margin-bottom: 48px;
+      margin-bottom: 32px;
     }
 
     /* ─── HOW IT WORKS ───────────────────────────────────── */
@@ -238,7 +239,7 @@
       display: grid;
       grid-template-columns: 48px 1fr;
       gap: 24px;
-      padding: 32px 0;
+      padding: 22px 0;
       border-top: 1px solid var(--border);
     }
     .step:first-child { border-top: none; }
@@ -577,9 +578,9 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 600px) {
-      :root { --section-gap: 72px; }
+      :root { --section-gap: 52px; }
 
-      .hero { padding: 56px 0 52px; }
+      .hero { padding: 40px 0 36px; }
       .hero h1 { font-size: 1.85rem; }
 
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
