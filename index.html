@@ -1,790 +1,801 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brieflit — AI 뉴스로 배우는 업무 영어</title>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9F8N6CM9KT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9F8N6CM9KT');
-</script>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111111'/><text x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='20' font-weight='900' fill='%23F5C842'>B</text></svg>">
-<meta name="description" content="AI 트렌드를 놓치지 않으면서 원어민식 업무 표현까지. 어차피 알아야 할 AI, 어차피 써야 할 영어.">
-<meta property="og:title" content="Brieflit — AI 뉴스로 배우는 업무 영어">
-<meta property="og:description" content="뉴스 원문에서 직접 뽑은 원어민 업무 표현 3개, 매주 2회. 어차피 알아야 할 AI, 어차피 써야 할 영어.">
-<meta property="og:url" content="https://brieflit.news">
-<meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Brieflit — AI 뉴스로 배우는 업무 영어">
-<meta name="twitter:description" content="뉴스 원문에서 직접 뽑은 원어민 업무 표현 3개, 매주 2회. 어차피 알아야 할 AI, 어차피 써야 할 영어.">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&display=swap');
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --black: #111111;
-    --yellow: #F5C842;
-    --white: #ffffff;
-    --offwhite: #F7F4EE;
-    --gray: #888888;
-    --light-gray: #E8E5DF;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--offwhite);
-    color: var(--black);
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 48px;
-    background: var(--offwhite);
-    border-bottom: 1.5px solid var(--black);
-  }
-
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 900;
-    color: var(--black);
-    text-decoration: none;
-    letter-spacing: -1px;
-  }
-
-  .nav-logo span { color: var(--yellow); }
-
-  .nav-cta {
-    background: var(--black);
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 10px 24px;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s;
-  }
-
-  .nav-cta:hover {
-    background: var(--yellow);
-    color: var(--black);
-  }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 120px 48px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-marquee {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    transform: translateY(-50%);
-    overflow: hidden;
-    pointer-events: none;
-    user-select: none;
-    white-space: nowrap;
-  }
-
-  .hero-marquee-inner {
-    display: inline-block;
-    animation: marquee 20s linear infinite;
-  }
-
-  .hero-marquee-inner span {
-    font-family: 'Playfair Display', serif;
-    font-size: 200px;
-    font-weight: 900;
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--light-gray);
-    letter-spacing: -4px;
-    padding-right: 80px;
-    line-height: 1;
-  }
-
-  .hero-marquee-inner span em {
-    font-style: normal;
-    color: transparent;
-    -webkit-text-stroke: 1.5px rgba(245, 200, 66, 0.4);
-  }
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
-  .hero-content {
-    max-width: 760px;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--black);
-    margin-bottom: 32px;
-  }
-
-  .hero-eyebrow::before {
-    content: '';
-    display: block;
-    width: 32px;
-    height: 1.5px;
-    background: var(--yellow);
-  }
-
-  .hero-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(52px, 7vw, 88px);
-    font-weight: 900;
-    line-height: 1.0;
-    letter-spacing: -3px;
-    color: var(--black);
-    margin-bottom: 32px;
-  }
-
-  .hero-title em {
-    font-style: italic;
-    color: var(--yellow);
-    -webkit-text-stroke: 1px var(--black);
-  }
-
-  .hero-desc {
-    font-size: 18px;
-    font-weight: 300;
-    line-height: 1.7;
-    color: #444;
-    max-width: 540px;
-    margin-bottom: 48px;
-  }
-
-  .hero-desc strong {
-    font-weight: 500;
-    color: var(--black);
-  }
-
-  .hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--yellow);
-    color: var(--black);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    padding: 18px 40px;
-    text-decoration: none;
-    border: 1.5px solid var(--black);
-    transition: background 0.2s, transform 0.15s;
-    display: inline-block;
-  }
-
-  .btn-primary:hover {
-    background: var(--black);
-    color: var(--yellow);
-    transform: translateY(-2px);
-  }
-
-  .hero-note {
-    font-size: 13px;
-    color: var(--gray);
-    font-weight: 300;
-  }
-
-  .hero-note strong {
-    color: var(--black);
-    font-weight: 500;
-  }
-
-  /* STATS BAR */
-  .stats-bar {
-    background: var(--black);
-    padding: 24px 48px;
-    display: flex;
-    align-items: center;
-    gap: 0;
-    overflow: hidden;
-  }
-
-  .stat-item {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    padding: 0 48px;
-    border-right: 1px solid #333;
-    flex-shrink: 0;
-  }
-
-  .stat-item:first-child { padding-left: 0; }
-  .stat-item:last-child { border-right: none; }
-
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--yellow);
-  }
-
-  .stat-label {
-    font-size: 12px;
-    font-weight: 300;
-    color: #999;
-    letter-spacing: 0.5px;
-  }
-
-  /* HOW IT WORKS */
-  .section {
-    padding: 100px 48px;
-  }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gray);
-    margin-bottom: 16px;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(36px, 4vw, 52px);
-    font-weight: 700;
-    letter-spacing: -2px;
-    line-height: 1.1;
-    color: var(--black);
-    margin-bottom: 64px;
-    max-width: 600px;
-  }
-
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border: 1.5px solid var(--black);
-  }
-
-  .step {
-    padding: 48px 40px;
-    border-right: 1.5px solid var(--black);
-    position: relative;
-    background: var(--white);
-    transition: background 0.2s;
-  }
-
-  .step:last-child { border-right: none; }
-  .step:hover { background: var(--offwhite); }
-
-  .step-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 72px;
-    font-weight: 900;
-    color: var(--light-gray);
-    line-height: 1;
-    margin-bottom: 24px;
-  }
-
-  .step-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--black);
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
-  }
-
-  .step-desc {
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 1.7;
-    color: #555;
-  }
-
-  /* SAMPLE */
-  .sample-section {
-    background: var(--black);
-    padding: 100px 48px;
-  }
-
-  .sample-section .section-label { color: #666; }
-  .sample-section .section-title { color: var(--white); }
-
-  .sample-card {
-    background: #1a1a1a;
-    border: 1px solid #333;
-    max-width: 680px;
-  }
-
-  .sample-header {
-    background: var(--black);
-    padding: 20px 28px;
-    border-bottom: 1px solid #333;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .sample-tag {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--yellow);
-  }
-
-  .sample-date { font-size: 11px; color: #555; }
-
-  .sample-body { padding: 28px; }
-
-  .expr-card {
-    border: 1px solid #2a2a2a;
-    margin-bottom: 16px;
-    overflow: hidden;
-  }
-
-  .expr-top {
-    background: #222;
-    padding: 16px 20px;
-    border-bottom: 1px solid #2a2a2a;
-  }
-
-  .expr-phrase {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--white);
-    letter-spacing: -0.5px;
-  }
-
-  .expr-type {
-    font-size: 11px;
-    color: #555;
-    margin-top: 2px;
-  }
-
-  .expr-meaning {
-    font-size: 13px;
-    color: #aaa;
-    margin-top: 4px;
-  }
-
-  .expr-quote {
-    padding: 12px 20px;
-    background: #1a1a1a;
-    border-bottom: 1px solid #2a2a2a;
-    font-family: 'Playfair Display', serif;
-    font-size: 13px;
-    font-style: italic;
-    color: #666;
-    line-height: 1.6;
-  }
-
-  .expr-example {
-    padding: 12px 20px;
-    background: #1a1a1a;
-    border-top: 2px solid var(--yellow);
-  }
-
-  .expr-example-label {
-    font-size: 9px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #555;
-    margin-bottom: 4px;
-  }
-
-  .expr-example-text {
-    font-size: 13px;
-    color: #ccc;
-    line-height: 1.6;
-  }
-
-  .highlight {
-    background: var(--yellow);
-    color: var(--black);
-    padding: 1px 3px;
-    font-weight: 500;
-  }
-
-  /* PRICING */
-  .pricing-section {
-    padding: 100px 48px;
-    background: var(--offwhite);
-  }
-
-  .pricing-card {
-    max-width: 480px;
-    background: var(--white);
-    border: 1.5px solid var(--black);
-    padding: 56px 48px;
-    position: relative;
-  }
-
-  .pricing-badge {
-    position: absolute;
-    top: -14px;
-    left: 40px;
-    background: var(--yellow);
-    color: var(--black);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border: 1.5px solid var(--black);
-  }
-
-  .pricing-price {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    margin-bottom: 8px;
-  }
-
-  .price-original {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    color: var(--gray);
-    text-decoration: line-through;
-  }
-
-  .price-current {
-    font-family: 'Playfair Display', serif;
-    font-size: 52px;
-    font-weight: 900;
-    color: var(--black);
-    letter-spacing: -2px;
-    line-height: 1;
-  }
-
-  .price-unit {
-    font-size: 14px;
-    color: var(--gray);
-    font-weight: 300;
-  }
-
-  .pricing-note {
-    font-size: 13px;
-    color: var(--gray);
-    margin-bottom: 40px;
-    font-weight: 300;
-  }
-
-  .pricing-features {
-    list-style: none;
-    margin-bottom: 40px;
-  }
-
-  .pricing-features li {
-    font-size: 15px;
-    font-weight: 300;
-    color: #444;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--light-gray);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .pricing-features li::before {
-    content: '';
-    display: block;
-    width: 6px;
-    height: 6px;
-    background: var(--yellow);
-    border: 1px solid var(--black);
-    flex-shrink: 0;
-  }
-
-  .btn-subscribe {
-    display: block;
-    width: 100%;
-    background: var(--yellow);
-    color: var(--black);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    border: 1.5px solid var(--black);
-    transition: background 0.2s, color 0.2s, transform 0.15s;
-  }
-
-  .btn-subscribe:hover {
-    background: var(--black);
-    color: var(--yellow);
-    transform: translateY(-2px);
-  }
-
-  .refund-note {
-    font-size: 12px;
-    color: var(--gray);
-    text-align: center;
-    margin-top: 16px;
-    font-weight: 300;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--black);
-    padding: 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1.5px solid #222;
-  }
-
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    font-weight: 900;
-    color: var(--white);
-    letter-spacing: -1px;
-  }
-
-  .footer-logo span { color: var(--yellow); }
-
-  .footer-info {
-    font-size: 12px;
-    color: #555;
-    font-weight: 300;
-    text-align: right;
-    line-height: 1.8;
-  }
-
-  .footer-info a {
-    color: #555;
-    text-decoration: none;
-  }
-
-  .footer-info a:hover { color: var(--yellow); }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-eyebrow { animation: fadeUp 0.6s ease both; }
-  .hero-title { animation: fadeUp 0.6s ease 0.1s both; }
-  .hero-desc { animation: fadeUp 0.6s ease 0.2s both; }
-  .hero-actions { animation: fadeUp 0.6s ease 0.3s both; }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    .hero { padding: 100px 24px 60px; }
-    .hero::before { font-size: 280px; right: -20px; }
-    .stats-bar { padding: 20px 24px; gap: 0; overflow-x: auto; }
-    .stat-item { padding: 0 24px; }
-    .section { padding: 60px 24px; }
-    .steps { grid-template-columns: 1fr; }
-    .step { border-right: none; border-bottom: 1.5px solid var(--black); }
-    .step:last-child { border-bottom: none; }
-    .sample-section { padding: 60px 24px; }
-    .pricing-section { padding: 60px 24px; }
-    .pricing-card { padding: 48px 28px; }
-    footer { padding: 32px 24px; flex-direction: column; gap: 24px; text-align: center; }
-    .footer-info { text-align: center; }
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brieflit — AI 뉴스로 배우는 업무 영어</title>
+  <meta name="description" content="AI 트렌드를 읽으면서 원어민 업무 표현까지. 매주 2회, 3분이면 됩니다." />
+
+  <!-- Google Fonts: Playfair Display + DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --black:      #111111;
+      --yellow:     #F5C842;
+      --offwhite:   #F7F4EE;
+      --gray:       #888888;
+      --border:     rgba(255,255,255,0.08);
+      --card-bg:    #1A1A1A;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', Trebuchet MS, sans-serif;
+
+      --max-w: 720px;
+      --section-gap: 100px;
+    }
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--offwhite);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* ─── LAYOUT ──────────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17,17,17,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+    .logo em { font-style: italic; color: var(--yellow); }
+    .nav-cta {
+      background: var(--yellow);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 4px;
+      transition: opacity 0.15s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ─── TICKER ─────────────────────────────────────────── */
+    .ticker-wrap {
+      overflow: hidden;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 7px 0;
+      white-space: nowrap;
+    }
+    .ticker-track {
+      display: inline-block;
+      animation: ticker 28s linear infinite;
+    }
+    .ticker-track span { margin: 0 40px; }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      padding: 80px 0 72px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--yellow);
+    }
+    .hero-pain {
+      font-size: 1rem;
+      color: rgba(247,244,238,0.6);
+      margin-bottom: 32px;
+      max-width: 520px;
+      line-height: 1.8;
+      border-left: 2px solid var(--yellow);
+      padding-left: 16px;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: rgba(247,244,238,0.85);
+      max-width: 520px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 14px 28px;
+      border-radius: 4px;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .hero-price-note {
+      font-size: 0.82rem;
+      color: var(--gray);
+    }
+    .hero-price-note strong { color: var(--offwhite); }
+
+    /* ─── STATS ──────────────────────────────────────────── */
+    .stats {
+      padding: 52px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 12px 8px;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--gray);
+      line-height: 1.4;
+    }
+
+    /* ─── SECTION COMMON ─────────────────────────────────── */
+    section { padding: var(--section-gap) 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      color: rgba(247,244,238,0.6);
+      max-width: 480px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+    }
+
+    /* ─── HOW IT WORKS ───────────────────────────────────── */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 24px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+    .step:first-child { border-top: none; }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--yellow);
+      padding-top: 2px;
+    }
+    .step-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--offwhite);
+    }
+    .step-body {
+      font-size: 0.88rem;
+      color: rgba(247,244,238,0.6);
+      line-height: 1.75;
+    }
+
+    /* ─── CARD SHOWCASE ──────────────────────────────────── */
+    /*
+     * 카드 이미지 사용법:
+     * 1. 카드 이미지를 GitHub 레포 /images/ 폴더에 업로드
+     * 2. 아래 .showcase-card 의 background-image URL을 실제 경로로 교체
+     * 예: background-image: url('images/card_throw_shade.png');
+     *
+     * 현재는 placeholder 상태 (이미지 없이 스타일만 표시)
+     */
+    .showcase-scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 16px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--yellow) transparent;
+      -webkit-overflow-scrolling: touch;
+    }
+    .showcase-scroll::-webkit-scrollbar { height: 3px; }
+    .showcase-scroll::-webkit-scrollbar-track { background: transparent; }
+    .showcase-scroll::-webkit-scrollbar-thumb { background: var(--yellow); border-radius: 2px; }
+
+    .showcase-card {
+      flex: 0 0 auto;
+      width: 280px;
+      aspect-ratio: 4/3;
+      border-radius: 8px;
+      background-color: var(--card-bg);
+      background-size: cover;
+      background-position: center;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .showcase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+    }
+
+    /* 실제 이미지 없을 때 보이는 placeholder */
+    .showcase-card.placeholder::after {
+      content: attr(data-label);
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 16px;
+      /* 이미지 추가 후 이 ::after 스타일 전체 삭제 가능 */
+    }
+    /* ─── 이미지 있는 카드: class="showcase-card" (placeholder 없이) ─── */
+    /* 예시:
+    .card-throw-shade  { background-image: url('images/card_throw_shade.png'); }
+    .card-tip-1        { background-image: url('images/brieflit_tip_card3.png'); }
+    .card-avatar       { background-image: url('images/card_ai_avatar.png'); }
+    */
+
+    .showcase-hint {
+      margin-top: 16px;
+      font-size: 0.78rem;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ─── SAMPLE EXPRESSION ──────────────────────────────── */
+    .expr-list { display: flex; flex-direction: column; gap: 16px; }
+    .expr-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px;
+    }
+    .expr-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .expr-term {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--yellow);
+    }
+    .expr-pos {
+      font-size: 0.72rem;
+      color: var(--gray);
+      border: 1px solid rgba(136,136,136,0.4);
+      padding: 2px 8px;
+      border-radius: 100px;
+    }
+    .expr-meaning {
+      font-size: 0.88rem;
+      color: rgba(247,244,238,0.75);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .expr-quote {
+      font-size: 0.82rem;
+      color: rgba(247,244,238,0.45);
+      border-left: 2px solid var(--yellow);
+      padding-left: 14px;
+      margin-bottom: 14px;
+      line-height: 1.7;
+      font-style: italic;
+    }
+    .expr-example {
+      font-size: 0.85rem;
+      color: rgba(247,244,238,0.7);
+      background: rgba(255,255,255,0.04);
+      border-radius: 6px;
+      padding: 12px 16px;
+      line-height: 1.7;
+    }
+    .expr-example-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 4px;
+    }
+
+    /* ─── PRICING ────────────────────────────────────────── */
+    .pricing-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(245,200,66,0.3);
+      border-radius: 12px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--yellow);
+    }
+    .pricing-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .pricing-main {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .pricing-original {
+      font-size: 0.95rem;
+      color: var(--gray);
+      text-decoration: line-through;
+    }
+    .pricing-price {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--yellow);
+      line-height: 1;
+    }
+    .pricing-unit {
+      font-size: 0.85rem;
+      color: rgba(247,244,238,0.6);
+    }
+    .pricing-note {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: rgba(247,244,238,0.8);
+      line-height: 1.5;
+    }
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--yellow);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .btn-pricing {
+      display: block;
+      width: 100%;
+      background: var(--yellow);
+      color: var(--black);
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 16px;
+      border-radius: 6px;
+      transition: opacity 0.15s, transform 0.15s;
+    }
+    .btn-pricing:hover { opacity: 0.88; transform: translateY(-1px); }
+    .pricing-annual {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+    .pricing-annual strong { color: rgba(247,244,238,0.75); }
+    .pricing-guarantee {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 900;
+    }
+    .footer-logo em { font-style: italic; color: var(--yellow); }
+    .footer-meta {
+      font-size: 0.78rem;
+      color: var(--gray);
+      line-height: 1.6;
+      text-align: right;
+    }
+    .footer-meta a { color: var(--gray); text-decoration: underline; text-underline-offset: 3px; }
+    .footer-meta a:hover { color: var(--offwhite); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 600px) {
+      :root { --section-gap: 72px; }
+
+      .hero { padding: 56px 0 52px; }
+      .hero h1 { font-size: 1.85rem; }
+
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .stat-item:nth-child(3),
+      .stat-item:nth-child(4) { border-top: 1px solid var(--border); }
+      .stat-item:nth-child(4) { border-right: none; }
+
+      .step { grid-template-columns: 36px 1fr; gap: 16px; }
+
+      .showcase-card { width: 240px; }
+
+      .pricing-card { padding: 28px 24px; }
+
+      .footer-meta { text-align: left; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">Brief<span>lit</span></a>
-  <a href="https://page.stibee.com/subscriptions/486420" class="nav-cta">구독하기</a>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="logo">Brief<em>lit</em></a>
+      <a href="https://page.stibee.com/subscriptions/486420" class="nav-cta">구독하기</a>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-marquee">
-    <div class="hero-marquee-inner">
-      <span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span><span>Brief<em>lit</em></span>
+  <!-- TICKER -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker-track">
+      <span>cut through the noise</span>
+      <span>·</span>
+      <span>push the envelope</span>
+      <span>·</span>
+      <span>hit the ground running</span>
+      <span>·</span>
+      <span>throw shade</span>
+      <span>·</span>
+      <span>raise the bar</span>
+      <span>·</span>
+      <span>move the needle</span>
+      <span>·</span>
+      <span>in the pipeline</span>
+      <span>·</span>
+      <span>cut through the noise</span>
+      <span>·</span>
+      <span>push the envelope</span>
+      <span>·</span>
+      <span>hit the ground running</span>
+      <span>·</span>
+      <span>throw shade</span>
+      <span>·</span>
+      <span>raise the bar</span>
+      <span>·</span>
+      <span>move the needle</span>
+      <span>·</span>
+      <span>in the pipeline</span>
+      <span>·</span>
     </div>
   </div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">AI News · Business English</div>
-    <h1 class="hero-title">
-      AI 뉴스 읽는<br>
-      3분,<br>
-      업무 영어가<br>
-      <em>됩니다</em>
-    </h1>
-    <p class="hero-desc">
-      AI 트렌드를 놓치지 않으면서 원어민식 표현까지.<br>
-      뉴스 원문에서 직접 뽑은 업무 영어 3개를 매주 2회 드립니다.<br>
-      <strong>어차피 알아야 할 AI, 어차피 써야 할 영어.</strong>
-    </p>
-    <div class="hero-actions">
-      <a href="https://page.stibee.com/subscriptions/486420" class="btn-primary">지금 구독하기 →</a>
-      <span class="hero-note">첫 달 <strong>3,950원</strong> · 이후 월 7,900원</span>
-    </div>
-  </div>
-</section>
 
-<!-- STATS BAR -->
-<div class="stats-bar">
-  <div class="stat-item">
-    <span class="stat-num">3</span>
-    <span class="stat-label">핵심 표현 / 회</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">2회</span>
-    <span class="stat-label">매주 발송</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">3분</span>
-    <span class="stat-label">읽는 시간</span>
-  </div>
-  <div class="stat-item">
-    <span class="stat-num">100%</span>
-    <span class="stat-label">실제 원문 기반</span>
-  </div>
-</div>
-
-<!-- HOW IT WORKS -->
-<section class="section">
-  <p class="section-label">How it works</p>
-  <h2 class="section-title">어떻게 만들어지나요</h2>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">01</div>
-      <div class="step-title">매일 수집하고 직접 고릅니다</div>
-      <p class="step-desc">TechCrunch, The Verge, MIT Technology Review 등 글로벌 AI 미디어 5곳의 기사를 매일 수집하고, 가장 시의성 있고 중요한 뉴스 하나를 직접 고릅니다.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">02</div>
-      <div class="step-title">표현 하나하나를 검증합니다</div>
-      <p class="step-desc">수백 개의 문장 중에서 원어민만 쓰는 세련된 표현을 엄격한 기준으로 3개만 추립니다. 기본 표현, 금융 전문 용어, 한 가지 상황에서만 쓰이는 표현은 모두 걸러냅니다.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">03</div>
-      <div class="step-title">바로 써먹을 수 있게 정리합니다</div>
-      <p class="step-desc">원문 문장, 업무 예문, 말하기 연습까지. 읽고 나서 오늘 회의나 이메일에서 바로 쓸 수 있도록 구성합니다.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SAMPLE -->
-<section class="sample-section">
-  <p class="section-label">Sample</p>
-  <h2 class="section-title">이런 표현을 배웁니다</h2>
-  <div class="sample-card">
-    <div class="sample-header">
-      <span class="sample-tag">Key Expressions</span>
-      <span class="sample-date">TechCrunch · 실제 원문</span>
-    </div>
-    <div class="sample-body">
-      <div class="expr-card">
-        <div class="expr-top">
-          <div class="expr-phrase">cut through the noise</div>
-          <div class="expr-type">동사구</div>
-          <div class="expr-meaning">핵심을 꿰뚫다, 혼란 속에서 중요한 것을 골라내다</div>
-        </div>
-        <div class="expr-quote">📰 "OpenAI's new model manages to <span class="highlight">cut through the noise</span> of competing benchmarks with a single, definitive result."</div>
-        <div class="expr-example">
-          <div class="expr-example-label">Business example</div>
-          <div class="expr-example-text">There's a lot of conflicting data, but this report really <span class="highlight">cuts through the noise</span> and tells us what matters.</div>
-        </div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container">
+      <span class="hero-eyebrow">AI News · Business English</span>
+      <h1>AI 공부도 밀리고,<br>영어도 그대로인<br><em>그 기분 알아요.</em></h1>
+      <p class="hero-pain">
+        AI 뉴스는 찾아보면 넘치는데 정작 업무에 써먹을 표현은 없고,<br>
+        영어 공부는 늘 내일로 미루고 있다면.
+      </p>
+      <p class="hero-desc">
+        Brieflit은 글로벌 AI 미디어 원문에서 원어민만 쓰는 업무 표현을 뽑아<br>
+        매주 화·목 3분 분량으로 드립니다.<br>
+        <strong>어차피 알아야 할 AI, 어차피 써야 할 영어.</strong>
+      </p>
+      <div class="hero-cta-group">
+        <a href="https://page.stibee.com/subscriptions/486420" class="btn-primary">지금 구독하기 →</a>
+        <span class="hero-price-note">첫 달 <strong>3,950원</strong> · 이후 월 7,900원</span>
       </div>
-      <div class="expr-card">
-        <div class="expr-top">
-          <div class="expr-phrase">push the envelope</div>
-          <div class="expr-type">동사구</div>
-          <div class="expr-meaning">한계를 밀어붙이다, 새로운 영역에 도전하다</div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">3</div>
+          <div class="stat-label">핵심 표현<br>/ 회</div>
         </div>
-        <div class="expr-quote">📰 "Anthropic continues to <span class="highlight">push the envelope</span> on AI safety research while shipping faster than ever."</div>
-        <div class="expr-example">
-          <div class="expr-example-label">Business example</div>
-          <div class="expr-example-text">Our design team is always <span class="highlight">pushing the envelope</span> — this campaign is unlike anything we've done before.</div>
+        <div class="stat-item">
+          <div class="stat-num">2회</div>
+          <div class="stat-label">매주<br>발송</div>
         </div>
-      </div>
-      <div class="expr-card">
-        <div class="expr-top">
-          <div class="expr-phrase">hit the ground running</div>
-          <div class="expr-type">동사구</div>
-          <div class="expr-meaning">즉시 본격적으로 시작하다, 처음부터 전속력으로 달리다</div>
+        <div class="stat-item">
+          <div class="stat-num">3분</div>
+          <div class="stat-label">읽는<br>시간</div>
         </div>
-        <div class="expr-quote">📰 "The new engineering team <span class="highlight">hit the ground running</span>, shipping three major features in their first two weeks."</div>
-        <div class="expr-example">
-          <div class="expr-example-label">Business example</div>
-          <div class="expr-example-text">We need someone who can <span class="highlight">hit the ground running</span> — there's no time for a slow onboarding.</div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">실제 원문<br>기반</div>
         </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- PRICING -->
-<section class="pricing-section" id="pricing">
-  <p class="section-label">Pricing</p>
-  <h2 class="section-title">심플하게, 하나의 플랜</h2>
-  <div class="pricing-card">
-    <div class="pricing-badge">얼리버드 50% 할인</div>
-    <div class="pricing-price">
-      <span class="price-original">7,900원</span>
-      <span class="price-current">3,950</span>
-      <span class="price-unit">원 / 첫 달</span>
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="container">
+      <p class="section-label">How it works</p>
+      <h2 class="section-title">어떻게 만들어지나요</h2>
+      <p class="section-sub">흔한 표현, 교과서 표현은 처음부터 걸러냅니다.<br>당신이 처음 보는 표현만 남깁니다.</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <div class="step-title">매일 수집하고 직접 고릅니다</div>
+            <div class="step-body">TechCrunch, The Verge, MIT Technology Review 등 글로벌 AI 미디어 5곳의 기사를 매일 수집하고, 가장 시의성 있고 중요한 뉴스 하나를 직접 고릅니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <div class="step-title">표현 하나하나를 검증합니다</div>
+            <div class="step-body">수백 개의 문장 중에서 원어민만 쓰는 세련된 표현을 엄격한 기준으로 3개만 추립니다. 기본 표현, 금융 전문 용어, 한 가지 상황에서만 쓰이는 표현은 모두 걸러냅니다.</div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <div class="step-title">바로 써먹을 수 있게 정리합니다</div>
+            <div class="step-body">원문 문장, 업무 예문, 말하기 연습까지. 읽고 나서 오늘 회의나 이메일에서 바로 쓸 수 있도록 구성합니다.</div>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="pricing-note">이후 월 7,900원 · 언제든 해지 가능</p>
-    <p class="pricing-note" style="margin-top:8px;">연간 구독 시 <strong>79,000원</strong> (월 6,583원)</p>
-    <ul class="pricing-features">
-      <li>매주 2회 AI 뉴스 브리핑</li>
-      <li>회당 원어민 업무 표현 3개 (엄선)</li>
-      <li>실제 원문 + 업무 예문 + 말하기 연습</li>
-      <li>TechCrunch, The Verge 등 글로벌 소스</li>
-      <li>첫 브리핑 후 100% 환불 보장</li>
-    </ul>
-    <a href="https://page.stibee.com/subscriptions/486420" class="btn-subscribe">지금 구독하기 →</a>
-    <p class="refund-note">카드 · 카카오페이 결제 · 마음에 안 들면 전액 환불</p>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">Brief<span>lit</span></div>
-  <div class="footer-info">
-    AI 뉴스로 배우는 업무 영어<br>
-    Super Alloy, Inc. · <a href="mailto:team@brieflit.news">team@brieflit.news</a>
-  </div>
-</footer>
+  <!-- CARD SHOWCASE -->
+  <section>
+    <div class="container">
+      <p class="section-label">From the feed</p>
+      <h2 class="section-title">매주 이런 표현을 다룹니다</h2>
+      <p class="section-sub">X와 인스타그램에 매일 올라오는 표현 카드 일부예요.<br>뉴스레터에서는 원문·예문·연습까지 훨씬 깊게 다룹니다.</p>
+    </div>
+
+    <!--
+    ============================================================
+    카드 이미지 추가 방법:
+    1. 카드 이미지를 GitHub 레포 /images/ 폴더에 업로드
+    2. 각 .showcase-card 에서 class="showcase-card placeholder" 를
+       class="showcase-card" 로 바꾸고
+       style="background-image:url('images/파일명.png')" 추가
+    3. data-label 속성은 삭제해도 됨 (placeholder 텍스트용)
+    ============================================================
+    -->
+    <div class="container">
+      <div class="showcase-scroll">
+        <div class="showcase-card placeholder" data-label="카드 이미지\n추가 예정"></div>
+        <div class="showcase-card placeholder" data-label="카드 이미지\n추가 예정"></div>
+        <div class="showcase-card placeholder" data-label="카드 이미지\n추가 예정"></div>
+        <div class="showcase-card placeholder" data-label="카드 이미지\n추가 예정"></div>
+      </div>
+      <p class="showcase-hint">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        옆으로 스크롤하면 더 있어요
+      </p>
+    </div>
+  </section>
+
+  <!-- SAMPLE -->
+  <section>
+    <div class="container">
+      <p class="section-label">Sample</p>
+      <h2 class="section-title">실제 이런 내용이 옵니다</h2>
+      <p class="section-sub">아래는 실제 발행된 Brieflit의 표현 예시입니다.</p>
+
+      <div class="expr-list">
+        <div class="expr-card">
+          <div class="expr-header">
+            <span class="expr-term">cut through the noise</span>
+            <span class="expr-pos">동사구</span>
+          </div>
+          <div class="expr-meaning">핵심을 꿰뚫다 — 복잡하거나 혼란스러운 상황에서 중요한 것만 골라내다</div>
+          <div class="expr-quote">"OpenAI's new model manages to cut through the noise of competing benchmarks with a single, definitive result." — TechCrunch</div>
+          <div class="expr-example">
+            <div class="expr-example-label">업무 예문</div>
+            There's a lot of conflicting data, but this report really cuts through the noise and tells us what matters.
+          </div>
+        </div>
+
+        <div class="expr-card">
+          <div class="expr-header">
+            <span class="expr-term">push the envelope</span>
+            <span class="expr-pos">동사구</span>
+          </div>
+          <div class="expr-meaning">한계를 밀어붙이다 — 기존의 경계나 기준을 뛰어넘어 새로운 영역에 도전하다</div>
+          <div class="expr-quote">"Anthropic continues to push the envelope on AI safety research while shipping faster than ever." — The Verge</div>
+          <div class="expr-example">
+            <div class="expr-example-label">업무 예문</div>
+            Our design team is always pushing the envelope — this campaign is unlike anything we've done before.
+          </div>
+        </div>
+
+        <div class="expr-card">
+          <div class="expr-header">
+            <span class="expr-term">hit the ground running</span>
+            <span class="expr-pos">동사구</span>
+          </div>
+          <div class="expr-meaning">즉시 본격적으로 시작하다 — 준비 없이도 처음부터 전속력으로 달리다</div>
+          <div class="expr-quote">"The new engineering team hit the ground running, shipping three major features in their first two weeks." — MIT Technology Review</div>
+          <div class="expr-example">
+            <div class="expr-example-label">업무 예문</div>
+            We need someone who can hit the ground running — there's no time for a slow onboarding.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="container">
+      <p class="section-label">Pricing</p>
+      <h2 class="section-title">심플하게, 하나의 플랜</h2>
+      <p class="section-sub">지금 구독하면 첫 달 50% 할인. 언제든 해지 가능합니다.</p>
+
+      <div class="pricing-card">
+        <div class="pricing-badge">얼리버드 50% 할인</div>
+        <div class="pricing-main">
+          <span class="pricing-original">7,900원</span>
+          <span class="pricing-price">3,950원</span>
+          <span class="pricing-unit">/ 첫 달</span>
+        </div>
+        <div class="pricing-note">이후 월 7,900원 · 언제든 해지 가능</div>
+
+        <ul class="pricing-features">
+          <li>매주 2회 AI 뉴스 브리핑 (화·목 오전 8시)</li>
+          <li>회당 원어민 업무 표현 3개 엄선</li>
+          <li>실제 원문 + 업무 예문 + 말하기 연습</li>
+          <li>TechCrunch, The Verge 등 글로벌 소스</li>
+          <li>첫 브리핑 후 100% 환불 보장</li>
+        </ul>
+
+        <a href="https://page.stibee.com/subscriptions/486420" class="btn-pricing">지금 구독하기 →</a>
+        <p class="pricing-annual">연간 구독 시 <strong>79,000원</strong> (월 6,583원 · 약 17% 추가 절약)</p>
+        <p class="pricing-guarantee">카드 · 카카오페이 결제 · 마음에 안 들면 전액 환불</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">Brief<em>lit</em></div>
+        <div class="footer-meta">
+          AI 뉴스로 배우는 업무 영어<br>
+          Super Alloy, Inc. · <a href="mailto:team@brieflit.news">team@brieflit.news</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
