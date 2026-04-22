@@ -278,8 +278,8 @@
 
     .showcase-card {
       flex: 0 0 auto;
-      width: 280px;
-      aspect-ratio: 4/3;
+      width: 220px;
+      aspect-ratio: 1/1;
       border-radius: 8px;
       background-color: var(--card-bg);
       background-size: cover;
@@ -363,6 +363,84 @@
       text-transform: uppercase;
       color: var(--gray);
       margin-bottom: 4px;
+    }
+
+    /* ─── NEWS BRIEF CARD ────────────────────────────────── */
+    .news-brief {
+      background: rgba(245,200,66,0.06);
+      border: 1px solid rgba(245,200,66,0.2);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin-bottom: 16px;
+    }
+    .news-brief-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .news-brief-source {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+    .news-brief-date {
+      font-size: 0.72rem;
+      color: var(--gray);
+    }
+    .news-brief-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--offwhite);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .news-brief-body {
+      font-size: 0.85rem;
+      color: rgba(247,244,238,0.6);
+      line-height: 1.75;
+    }
+    .news-brief-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: var(--gray);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .news-brief-divider::before,
+    .news-brief-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .expr-speak {
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+    }
+    .expr-speak-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 6px;
+    }
+    .expr-speak-body {
+      font-size: 0.85rem;
+      color: rgba(247,244,238,0.6);
+      line-height: 1.75;
+      font-style: italic;
     }
 
     /* ─── PRICING ────────────────────────────────────────── */
@@ -512,7 +590,7 @@
 
       .step { grid-template-columns: 36px 1fr; gap: 16px; }
 
-      .showcase-card { width: 240px; }
+      .showcase-card { width: 180px; }
 
       .pricing-card { padding: 28px 24px; }
 
@@ -654,7 +732,7 @@
     <div class="container">
       <div class="showcase-scroll">
         <div class="showcase-card" style="background-image:url('images/card_gain_traction.png')"></div>
-        <div class="showcase-card" style="background-image:url('images/card_throw_shade.png')"></div>
+        <div class="showcase-card" style="background-image:url('images/card_throw_shades.png')"></div>
         <div class="showcase-card" style="background-image:url('images/card_tip.png')"></div>
         <div class="showcase-card" style="background-image:url('images/card_ai_avatar.png')"></div>
       </div>
@@ -670,7 +748,21 @@
     <div class="container">
       <p class="section-label">Sample</p>
       <h2 class="section-title">실제 이런 내용이 옵니다</h2>
-      <p class="section-sub">아래는 실제 발행된 Brieflit의 표현 예시입니다.</p>
+      <p class="section-sub">매 이슈는 AI 뉴스 요약으로 시작해서, 그 기사에서 뽑은 표현 3개로 이어집니다.</p>
+
+      <!-- 뉴스 브리핑 -->
+      <div class="news-brief">
+        <div class="news-brief-meta">
+          <span class="news-brief-source">TechCrunch</span>
+          <span class="news-brief-date">2025. 04. 15</span>
+        </div>
+        <div class="news-brief-title">OpenAI, 새 추론 모델 o3 공개 — 벤치마크 논란 속 "결과로 증명"</div>
+        <div class="news-brief-body">
+          OpenAI가 최신 추론 모델 o3를 공개했습니다. 경쟁사들의 벤치마크 수치가 넘쳐나는 상황에서, OpenAI는 단 하나의 결과로 성능을 입증하겠다는 전략을 택했습니다. 업계에서는 이번 발표가 AI 성능 평가 기준 자체를 바꿀 수 있다는 반응이 나오고 있습니다.
+        </div>
+      </div>
+
+      <div class="news-brief-divider">이 기사에서 뽑은 표현</div>
 
       <div class="expr-list">
         <div class="expr-card">
@@ -683,6 +775,10 @@
           <div class="expr-example">
             <div class="expr-example-label">업무 예문</div>
             There's a lot of conflicting data, but this report really cuts through the noise and tells us what matters.
+          </div>
+          <div class="expr-speak">
+            <div class="expr-speak-label">🗣 Speak it out</div>
+            <div class="expr-speak-body">"We need to cut through the noise here — what's the one thing that actually matters to the client?"</div>
           </div>
         </div>
 
@@ -697,6 +793,10 @@
             <div class="expr-example-label">업무 예문</div>
             Our design team is always pushing the envelope — this campaign is unlike anything we've done before.
           </div>
+          <div class="expr-speak">
+            <div class="expr-speak-label">🗣 Speak it out</div>
+            <div class="expr-speak-body">"I think we should push the envelope on this one — the client said they want something bold."</div>
+          </div>
         </div>
 
         <div class="expr-card">
@@ -709,6 +809,10 @@
           <div class="expr-example">
             <div class="expr-example-label">업무 예문</div>
             We need someone who can hit the ground running — there's no time for a slow onboarding.
+          </div>
+          <div class="expr-speak">
+            <div class="expr-speak-label">🗣 Speak it out</div>
+            <div class="expr-speak-body">"Don't worry — I've done this before. I'll hit the ground running from day one."</div>
           </div>
         </div>
       </div>
